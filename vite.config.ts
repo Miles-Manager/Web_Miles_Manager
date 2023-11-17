@@ -9,6 +9,7 @@ export default defineConfig({
 			'@': resolve(__dirname, './src'),
 			'@pages': resolve(__dirname, './src/pages'),
 			'@components': resolve(__dirname, './src/components'),
+			'@config': resolve(__dirname, './src/config'),
 			'@services': resolve(__dirname, './src/services'),
 			'@contexts': resolve(__dirname, './src/contexts'),
 			'@helpers': resolve(__dirname, './src/helpers'),
