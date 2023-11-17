@@ -39,7 +39,6 @@ export const Header: React.FC<HeaderProps> = () => {
 					<Button size="lg" color="danger" text="Cadastrar" />
 				</div>
 			</div>
-			{/* <h1>Header</h1> */}
 		</div>
 	)
 }
