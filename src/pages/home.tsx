@@ -1,4 +1,4 @@
-import { Header } from '@components/commons/header'
+import { Header } from '@/components/header'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 

@@ -1,4 +1,4 @@
-import { Button } from '@components/commons/button'
+import { Button } from '@/components/button'
 import * as Menu from '@radix-ui/react-navigation-menu'
 
 export interface HeaderProps {}
