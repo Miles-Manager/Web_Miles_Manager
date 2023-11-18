@@ -1,6 +1,4 @@
-export interface DefaultProps {}
-
-export const Default: React.FC<DefaultProps> = () => {
+export const Default: React.FC = () => {
 	return (
 		<div className="">
 			<h1>Default</h1>

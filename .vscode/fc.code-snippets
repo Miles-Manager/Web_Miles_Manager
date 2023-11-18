@@ -3,7 +3,7 @@
     "scope": "javascript, typescript, typescriptreact",
     "prefix": "fc",
     "body": [
-      "export interface ${1:${TM_FILENAME_BASE}}Props {}",
+      "export type ${1:${TM_FILENAME_BASE}}Props = {}",
       "",
       "export const ${1:${TM_FILENAME_BASE}}: React.FC<${1:${TM_FILENAME_BASE}}Props> = () => {",
       "  return (",

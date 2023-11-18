@@ -1,9 +1,7 @@
 import { Button } from '@/components/button'
 import * as Menu from '@radix-ui/react-navigation-menu'
 
-export interface HeaderProps {}
-
-export const Header: React.FC<HeaderProps> = () => {
+export const Header: React.FC = () => {
 	return (
 		<div className="h-28 w-full bg-black">
 			<div className="container mx-auto flex h-full items-center justify-between">

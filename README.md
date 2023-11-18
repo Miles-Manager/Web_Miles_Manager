@@ -78,7 +78,7 @@ export default defineConfig({
 Create a simple functional component initial setup
 
 ```javascript
-export interface FilenameProps {}
+export type FilenameProps = {}
 
 export const Filename: React.FC<FilenameProps> = () => {
   return (

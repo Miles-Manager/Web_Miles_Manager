@@ -1,7 +1,5 @@
 import { Header } from '@components/header'
 
-interface HomeProps {}
-
-export const Home: React.FC<HomeProps> = () => {
+export const Home: React.FC = () => {
 	return <Header />
 }
