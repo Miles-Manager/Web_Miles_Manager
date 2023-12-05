@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-	@apply p-0 m-0 box-border;
+	@apply p-0 m-0 box-border outline-none ;
 }
 
 html, body, #root {
