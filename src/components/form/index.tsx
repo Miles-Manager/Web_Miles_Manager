@@ -1,4 +1,4 @@
-import { Button } from '../button'
+import { Button } from './button'
 import { ErrorMessage } from './error-message'
 import { Field } from './field'
 import { Input } from './input'
