@@ -13,6 +13,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.2",
     "@radix-ui/react-navigation-menu": "^1.1.4",
     "@tanstack/react-query": "^5.7.0",
     "axios": "^1.6.0",
@@ -20,7 +21,9 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.2",
     "react-router-dom": "^6.18.0",
-    "tailwind-variants": "^0.1.18"
+    "react-toastify": "^9.1.3",
+    "tailwind-variants": "^0.1.18",
+    "zod": "^3.22.4"
   },
   "@rocketseat/eslint-config": "^2.1.0",
   "devDependencies": {
