@@ -1,13 +1,14 @@
 import { ReactNode } from 'react'
 
-interface TitleInterface {
+type H1Type = React.DetailedHTMLProps<
+	React.HTMLAttributes<HTMLHeadingElement>,
+	HTMLHeadingElement
+>
+
+type TitleInterface = H1Type & {
 	children: ReactNode
 }
 
-export const Title = ({ children }: TitleInterface) => {
-	return (
-		<h1 className="text-project-green-200 text-center text-4xl font-bold xl:text-5xl 2xl:text-7xl">
-			{children}
-		</h1>
-	)
+export const Title = ({ children, ...props }: TitleInterface) => {
+	return <h1 {...props}>{children}</h1>
 }

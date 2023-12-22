@@ -1,6 +1,7 @@
+import { HTMLAttributes } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-interface ErrorMessageProps {
+type ErrorMessageProps = HTMLAttributes<HTMLSpanElement> & {
 	field: string
 }
 
@@ -19,7 +20,7 @@ const get = (obj: Record<string | number | symbol, any>, path: string) => {
 	return result
 }
 
-export const ErrorMessage = ({ field }: ErrorMessageProps) => {
+export const ErrorMessage = ({ field, ...props }: ErrorMessageProps) => {
 	const {
 		formState: { errors },
 	} = useFormContext()
@@ -30,5 +31,9 @@ export const ErrorMessage = ({ field }: ErrorMessageProps) => {
 		return null
 	}
 
-	return <span className="text-red-500">{fieldError.message?.toString()}</span>
+	return (
+		<span className="text-red-500" {...props}>
+			{fieldError.message?.toString()}
+		</span>
+	)
 }
