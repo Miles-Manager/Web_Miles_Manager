@@ -1,6 +1,11 @@
 import { ReactNode } from 'react'
 
-interface TitleInterface {
+type H1Type = React.DetailedHTMLProps<
+	React.HTMLAttributes<HTMLHeadingElement>,
+	HTMLHeadingElement
+>
+
+type TitleInterface = H1Type & {
 	children: ReactNode
 }
 
