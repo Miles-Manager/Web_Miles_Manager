@@ -47,15 +47,17 @@ export const LoginForm: React.FC = () => {
 
 			if (!accessToken) {
 				const { message } = response?.data
-				notification('error', JSON.stringify(`Error: ${message}`))
+				notification({ type: 'error', message: `Error: ${message}` })
 				return
 			}
-			notification('success', JSON.stringify(accessToken))
+			notification({ type: 'success', message: JSON.stringify(accessToken) })
 		} catch (error) {
-			notification(
-				'error',
-				JSON.stringify(`Erro inesperado: ${JSON.stringify(error, null, 2)}`),
-			)
+			notification({
+				type: 'error',
+				message: JSON.stringify(
+					`Erro inesperado: ${JSON.stringify(error, null, 2)}`,
+				),
+			})
 		} finally {
 			setLoading(false)
 		}
