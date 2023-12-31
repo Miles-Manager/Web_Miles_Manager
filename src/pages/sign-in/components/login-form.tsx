@@ -5,8 +5,6 @@ import { Login } from '@services/sign-in/login'
 import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import { z } from 'zod'
 
 export const LoginForm: React.FC = () => {
@@ -66,47 +64,44 @@ export const LoginForm: React.FC = () => {
 	const { handleSubmit } = signInForm
 
 	return (
-		<>
-			<FormProvider {...signInForm}>
-				<form
-					onSubmit={handleSubmit(signIn)}
-					className="m-auto flex w-3/5 flex-col gap-6"
-				>
-					<Form.Title className="mb-4 text-5xl font-bold text-amber-500">
-						Faça seu login
-					</Form.Title>
-					<Form.Field>
-						<Form.Input
-							name="email"
-							placeholder="Digite seu e-mail"
-							className="rounded-md p-3"
-						/>
-						<Form.ErrorMessage field="email" className="text-amber-500" />
-					</Form.Field>
+		<FormProvider {...signInForm}>
+			<form
+				onSubmit={handleSubmit(signIn)}
+				className="m-auto flex w-3/5 flex-col gap-6"
+			>
+				<Form.Title className="mb-4 text-5xl font-bold text-amber-500">
+					Faça seu login
+				</Form.Title>
+				<Form.Field>
+					<Form.Input
+						name="email"
+						placeholder="Digite seu e-mail"
+						className="rounded-md p-3"
+					/>
+					<Form.ErrorMessage field="email" className="text-amber-500" />
+				</Form.Field>
 
-					<Form.Field>
-						<Form.Input
-							name="password"
-							type="password"
-							min={6}
-							placeholder="Digite sua senha"
-							className="rounded-md p-3"
-						/>
-						<Form.ErrorMessage field="password" className="text-amber-500" />
-					</Form.Field>
+				<Form.Field>
+					<Form.Input
+						name="password"
+						type="password"
+						min={6}
+						placeholder="Digite sua senha"
+						className="rounded-md p-3"
+					/>
+					<Form.ErrorMessage field="password" className="text-amber-500" />
+				</Form.Field>
 
-					<div className="flex items-center">
-						<span className="flex-grow text-white">Esqueceu a senha?</span>
-						<Form.Button
-							disabled={loading}
-							className="grow rounded-md bg-project-blue-100 py-3 text-white "
-						>
-							{loading ? 'Carregando...' : 'Entrar'}
-						</Form.Button>
-					</div>
-				</form>
-			</FormProvider>
-			<ToastContainer />
-		</>
+				<div className="flex items-center">
+					<span className="flex-grow text-white">Esqueceu a senha?</span>
+					<Form.Button
+						disabled={loading}
+						className="grow rounded-md bg-project-blue-100 py-3 text-white "
+					>
+						{loading ? 'Carregando...' : 'Entrar'}
+					</Form.Button>
+				</div>
+			</form>
+		</FormProvider>
 	)
 }

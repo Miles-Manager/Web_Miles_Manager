@@ -1,5 +1,5 @@
 import aircraft from '@/assets/aircraft.svg'
-import { LoginForm } from './components/loginForm'
+import { LoginForm } from './components/login-form'
 
 export const SignIn: React.FC = () => {
 	return (
