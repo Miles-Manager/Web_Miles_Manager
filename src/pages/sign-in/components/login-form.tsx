@@ -1,8 +1,11 @@
+import { useUserContext } from '@/contexts/User'
 import useNotification from '@/hooks/useNotification'
+import { User } from '@/types/user'
 import { Form } from '@components/form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Login } from '@services/sign-in/login'
 import { useMutation } from '@tanstack/react-query'
+import { JwtPayload, jwtDecode } from 'jwt-decode'
 import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -10,6 +13,8 @@ import { z } from 'zod'
 export const LoginForm: React.FC = () => {
 	const notification = useNotification()
 	const [loading, setLoading] = useState(false)
+
+	const userContext = useUserContext()
 
 	const signInSchema = z.object({
 		email: z
@@ -21,7 +26,7 @@ export const LoginForm: React.FC = () => {
 		password: z
 			.string()
 			.min(1, 'A senha é obrigatória')
-			.min(4, 'A senha precisa ter no mínimo 6 caracteres'),
+			.min(6, 'A senha precisa ter no mínimo 6 caracteres'),
 	})
 
 	type SignInFormData = z.infer<typeof signInSchema>
@@ -35,8 +40,10 @@ export const LoginForm: React.FC = () => {
 		mutationFn: Login,
 	})
 
+	const toggleLoading = () => setLoading((loading) => !loading)
+
 	async function signIn({ email, password }: SignInFormData) {
-		setLoading(true)
+		toggleLoading()
 		try {
 			const { accessToken, response } = await loginMutation.mutateAsync({
 				email,
@@ -48,7 +55,16 @@ export const LoginForm: React.FC = () => {
 				notification({ type: 'error', message: `Error: ${message}` })
 				return
 			}
-			notification({ type: 'success', message: JSON.stringify(accessToken) })
+
+			const { user } = jwtDecode<JwtPayload & { user: User }>(accessToken)
+
+			userContext.setUser(user)
+			userContext.setLoggedStatus(true)
+
+			notification({
+				type: 'success',
+				message: 'Login Feito com sucesso!',
+			})
 		} catch (error) {
 			notification({
 				type: 'error',
@@ -57,7 +73,7 @@ export const LoginForm: React.FC = () => {
 				),
 			})
 		} finally {
-			setLoading(false)
+			toggleLoading()
 		}
 	}
 
