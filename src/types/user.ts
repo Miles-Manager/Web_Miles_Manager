@@ -14,8 +14,7 @@ export type User = {
 	name: string
 	email: string
 	cpf: string
-	password: string
 	profile: Profile[]
-	roles: ROLES
-	created_at: Date
+	role: keyof typeof ROLES
+	createdAt: Date
 }
