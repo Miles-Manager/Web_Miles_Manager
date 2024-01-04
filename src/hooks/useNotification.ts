@@ -1,11 +1,13 @@
 import { toast } from 'react-toastify'
 
+type UseNotificationType = {
+	type: 'success' | 'error' | 'warning'
+	message: string
+	delay?: number
+}
+
 function useNotification() {
-	return (
-		type: 'success' | 'error' | 'warning',
-		message: string,
-		delay?: number,
-	) =>
+	return ({ message, type, delay }: UseNotificationType) =>
 		toast[type](message, {
 			theme: 'light',
 			draggable: true,

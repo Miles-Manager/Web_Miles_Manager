@@ -17,9 +17,7 @@ export type LoginOutput = Promise<{
 
 export const Login = async (data: LoginParams): LoginOutput => {
 	return api
-		.post('/auth/signIn', data, {
-			withCredentials: true,
-		})
+		.post('/auth/signIn', data)
 		.then((res) => res.data)
 		.catch((error) => error)
 }
