@@ -12,9 +12,8 @@ import { z } from 'zod'
 
 export const LoginForm: React.FC = () => {
 	const notification = useNotification()
+	const { setLoggedStatus, setUser } = useUserContext()
 	const [loading, setLoading] = useState(false)
-
-	const userContext = useUserContext()
 
 	const signInSchema = z.object({
 		email: z
@@ -52,14 +51,13 @@ export const LoginForm: React.FC = () => {
 
 			if (!accessToken) {
 				const { message } = response?.data
-				notification({ type: 'error', message: `Error: ${message}` })
-				return
+				return notification({ type: 'error', message: `Error: ${message}` })
 			}
 
 			const { user } = jwtDecode<JwtPayload & { user: User }>(accessToken)
 
-			userContext.setUser(user)
-			userContext.setLoggedStatus(true)
+			setUser(user)
+			setLoggedStatus(true)
 
 			notification({
 				type: 'success',
@@ -112,7 +110,7 @@ export const LoginForm: React.FC = () => {
 					<span className="flex-grow text-white">Esqueceu a senha?</span>
 					<Form.Button
 						disabled={loading}
-						className="grow rounded-md bg-project-blue-100 py-3 text-white "
+						className="grow rounded-md bg-project-blue-100 py-3 text-white"
 					>
 						{loading ? 'Carregando...' : 'Entrar'}
 					</Form.Button>
