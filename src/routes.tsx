@@ -6,7 +6,7 @@ import { SignUp } from '@pages/sign-up'
 /* v6 https://reactrouter.com/en/main/upgrading/v6-data */
 
 export const router = createBrowserRouter([
-	{ path: '/', Component: Home },
+	{ path: '/home', Component: Home },
 	{ path: '/sign-in', Component: SignIn },
 	{ path: '/sign-up', Component: SignUp },
 	/* ... all other routes */
